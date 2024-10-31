@@ -12,13 +12,15 @@ if (
     isset($_POST['titre']) && !empty($_POST['titre']) &&
     isset($_POST['img']) && !empty($_POST['img']) &&
     isset($_POST['description']) && !empty($_POST['description']) &&
-    isset($_POST['price']) && !empty($_POST['price'])
+    isset($_POST['price']) && !empty($_POST['price']) &&
+    isset($_POST['id']) && !empty($_POST['id'])
 ) {
     $newProduct = [
         'titre' => $_POST['titre'],
-        'img' => $_POST['img'],
+        'image' => $_POST['img'],
         'description' => $_POST['description'],
-        'price' => $_POST['price']
+        'prix' => $_POST['price'],
+        'id_categorie' => $_POST['id']
     ];
 
     add_product($bdd, $newProduct);
@@ -46,6 +48,8 @@ if (
         <textarea name="description" id="description"></textarea>
         <label for="price">Prix</label>
         <input type="number" name="price" id="price">
+        <label for="id">Id Categorie</label>
+        <input type="number" name="id" id="id">
         <input type="submit" value="Ajouter">
     </form>
 </body>

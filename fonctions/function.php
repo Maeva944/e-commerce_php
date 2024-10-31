@@ -23,6 +23,18 @@ function add_categorie($bdd, $NewCategorie){
 
 }
 
+//Avoir les produit par catégorie
+
+function getProductByCategorie($bdd, $id_categorie){
+    $sqlQuery = "SELECT * FROM categorie WHERE id_categorie = :id_categorie";
+    
+    $selectProduct = $bdd->prepare($sqlQuery);
+    $selectProduct->execute([
+        'id_categorie' => $id_categorie
+    ]);
+    return $selectProduct->fetchAll();
+}
+
 //fonction pour ajouter un produit
 
 function add_product($bdd, $NewProduct) {
@@ -34,8 +46,8 @@ function add_product($bdd, $NewProduct) {
         'titre' => $NewProduct['titre'],
         'description' => $NewProduct['description'],
         'prix' => $NewProduct['prix'],
-        'id_categorie' => $NewProduct['id_categorie'],
         'image' => $NewProduct['image'],
+        'id_categorie' => $NewProduct['id_categorie'],
     ]);
 }
 
