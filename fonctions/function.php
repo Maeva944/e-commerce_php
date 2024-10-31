@@ -2,6 +2,7 @@
 
 try{
     $bdd = new PDO('mysql:host=localhost;dbname=e-commerce;charset=utf8', 'root', '');
+    $categories = categorieAll($bdd);
 }
 catch(Exception $e){
     die('Erreur : '.$e->getMessage());
@@ -11,9 +12,9 @@ catch(Exception $e){
 //fonction pour ajouter une categorie
 
 function add_categorie($bdd, $NewCategorie){
-    $sqlQuerry = "INSERT INTO categorie(nom) VALUES(:nom)";
+    $sqlQuery = "INSERT INTO categorie(nom) VALUES(:nom)";
 
-    $insertCate = $bdd->prepare($sqlQuerry);
+    $insertCate = $bdd->prepare($sqlQuery);
 
     $insertCate->execute([
         'nom' => $NewCategorie['nom']
@@ -24,9 +25,9 @@ function add_categorie($bdd, $NewCategorie){
 //fonction pour ajouter un produit
 
 function add_product($bdd, $NewProduct){
-    $sqlQuerry = "INSERT INTO produit(titre, desciption, prix, id_categorie, `image`) VALUES(:titre, :description, :prix, :id_categorie, :image)";
+    $sqlQuery = "INSERT INTO produit(titre, desciption, prix, id_categorie, `image`) VALUES(:titre, :description, :prix, :id_categorie, :image)";
 
-    $insertProduct=$bdd->prepare($sqlQuerry);
+    $insertProduct=$bdd->prepare($sqlQuery);
 
     $insertProduct->execute([
         'titre'=>$NewProduct['titre'],
@@ -45,6 +46,18 @@ function productAll($bdd){
     $products->execute();
     // Retourne un tableau contenant toutes les lignes d'un jeu d'enregistrements
     return $products->fetchAll();
-  }
+}
+
+//Sellectioner tous les categorie
+
+function categorieAll($bdd){
+    $sqlQuery = 'SELECT * FROM categorie';
+    $categories = $bdd->prepare($sqlQuery);
+    $categories->execute();
+    return $categories->fetchAll();
+}
+
 ?>
+
+
 
