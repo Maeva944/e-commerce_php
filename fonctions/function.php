@@ -20,4 +20,31 @@ function add_categorie($bdd, $NewCategorie){
     ]);
 
 }
+
+//fonction pour ajouter un produit
+
+function add_product($bdd, $NewProduct){
+    $sqlQuerry = "INSERT INTO produit(titre, desciption, prix, id_categorie, `image`) VALUES(:titre, :description, :prix, :id_categorie, :image)";
+
+    $insertProduct=$bdd->prepare($sqlQuerry);
+
+    $insertProduct->execute([
+        'titre'=>$NewProduct['titre'],
+        'description'=>$NewProduct['description'],
+        'prix'=>$NewProduct['prix'],
+        'id_categorie'=>$NewProduct['id_categorie'],
+        'image'=>$NewProduct['image'],
+    ]);
+}
+
+//Selectionner tous les produits
+
+function productAll($bdd){
+    $sqlQuery = 'SELECT * FROM produit ORDER BY titre ASC';
+    $products = $bdd->prepare($sqlQuery);
+    $products->execute();
+    // Retourne un tableau contenant toutes les lignes d'un jeu d'enregistrements
+    return $products->fetchAll();
+  }
 ?>
+
