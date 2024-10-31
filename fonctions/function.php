@@ -3,6 +3,7 @@
 try{
     $bdd = new PDO('mysql:host=localhost;dbname=e-commerce;charset=utf8', 'root', '');
     $categories = categorieAll($bdd);
+    
 }
 catch(Exception $e){
     die('Erreur : '.$e->getMessage());
@@ -24,19 +25,20 @@ function add_categorie($bdd, $NewCategorie){
 
 //fonction pour ajouter un produit
 
-function add_product($bdd, $NewProduct){
-    $sqlQuery = "INSERT INTO produit(titre, desciption, prix, id_categorie, `image`) VALUES(:titre, :description, :prix, :id_categorie, :image)";
+function add_product($bdd, $NewProduct) {
+    $sqlQuery = "INSERT INTO produit(titre, description, prix, id_categorie, `image`) VALUES(:titre, :description, :prix, :id_categorie, :image)";
 
-    $insertProduct=$bdd->prepare($sqlQuery);
+    $insertProduct = $bdd->prepare($sqlQuery);
 
     $insertProduct->execute([
-        'titre'=>$NewProduct['titre'],
-        'description'=>$NewProduct['description'],
-        'prix'=>$NewProduct['prix'],
-        'id_categorie'=>$NewProduct['id_categorie'],
-        'image'=>$NewProduct['image'],
+        'titre' => $NewProduct['titre'],
+        'description' => $NewProduct['description'],
+        'prix' => $NewProduct['prix'],
+        'id_categorie' => $NewProduct['id_categorie'],
+        'image' => $NewProduct['image'],
     ]);
 }
+
 
 //Selectionner tous les produits
 
@@ -48,7 +50,18 @@ function productAll($bdd){
     return $products->fetchAll();
 }
 
-//Sellectioner tous les categorie
+//Supprimer une catégorie
+
+function delete_categorie($bdd, $oldcategorie) {
+    $sqlQuery = 'DELETE FROM categorie WHERE nom = :nom';
+    $categorie = $bdd->prepare($sqlQuery);
+    $categorie->execute([
+        'nom' => $oldcategorie
+    ]);
+}
+
+
+//Sellectioner tous les categories
 
 function categorieAll($bdd){
     $sqlQuery = 'SELECT * FROM categorie';

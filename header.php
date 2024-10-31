@@ -12,7 +12,7 @@
     <a href="index.php">E-commerce</a>
     <nav>
         <?php foreach ($categories as $categorie) : ?>
-            <a href="index.php?page=categorie&cat=<?= $categorie['id'] ?>"><?= $categorie['nom'] ?></a>
+            <a href="categorie.php?page=categorie&cat=<?= $categorie['id'] ?>"><?= $categorie['nom'] ?></a>
         <?php endforeach; ?>
     </nav>
 </header>
