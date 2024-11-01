@@ -35,6 +35,18 @@ function getProductByCategorie($bdd, $id_categorie){
     return $selectProduct->fetchAll();
 }
 
+//Avoir le nom des catégorie 
+
+function getCategorieName($bdd, $id_categorie){
+    $sqlQuery = "SELECT * FROM categorie WHERE id = :id_categorie";
+    $nameCategorie = $bdd->prepare($sqlQuery);
+    $nameCategorie->execute([
+        'id_categorie' => $id_categorie
+    ]);
+    $result = $nameCategorie->fetch(PDO::FETCH_ASSOC);
+    return $result ? $result['nom'] : 'Catégorie inconnue';
+}
+
 //fonction pour ajouter un produit
 
 function add_product($bdd, $NewProduct) {
@@ -69,6 +81,16 @@ function delete_categorie($bdd, $oldcategorie) {
     $categorie = $bdd->prepare($sqlQuery);
     $categorie->execute([
         'nom' => $oldcategorie
+    ]);
+}
+
+//supprimer un produit 
+
+function deleteProduct($bdd, $oldproduct){
+    $sqlQuery = "DELETE FROM produit WHERE id = :id";
+    $products = $bdd->prepare($sqlQuery);
+    $products->execute([
+        'id' => $oldproduct
     ]);
 }
 

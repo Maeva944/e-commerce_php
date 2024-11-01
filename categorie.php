@@ -3,20 +3,21 @@ include("header.php");
 ?>
 <?php 
 $id_categorie = $_GET['cat'] ?? 1; 
+$name_categorie = getCategorieName($bdd, $id_categorie);
 
 $products = getProductByCategorie($bdd, $id_categorie); // Récupérer les produits de la catégorie
 
 // Afficher les produits
 ?>
 <body>
-    <h2>Produits de la catégorie <?= htmlspecialchars($id_categorie) ?></h2>
+    <h2>Produits de la catégorie <?= htmlspecialchars($name_categorie) ?></h2>
     <ul>
         <?php foreach ($products as $produit) : ?>
             <li>
-                <h3><?= htmlspecialchars($produit['titre']) ?></h3>
-                <p><?= htmlspecialchars($produit['description']) ?></p>
-                <p>Prix : <?= htmlspecialchars($produit['prix']) ?> €</p>
                 <img src="<?= htmlspecialchars($produit['image']) ?>" alt="Image produit">
+                <h3><?= htmlspecialchars($produit['titre']) ?></h3>
+                <p>Prix : <?= htmlspecialchars($produit['prix']) ?> €</p>
+                <p><?= htmlspecialchars($produit['description']) ?></p>
             </li>
         <?php endforeach; ?>
     </ul>

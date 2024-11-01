@@ -7,6 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>e-commerce</title>
+    <link rel="Stylesheet" href="./assets/css/app.css">
 </head>
 <header>
     <a href="index.php">E-commerce</a>

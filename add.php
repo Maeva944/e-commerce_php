@@ -26,6 +26,14 @@ if (
     add_product($bdd, $newProduct);
 }
 
+//Vérification pour supprimer un produit
+
+if(isset($_POST['idproduct']) && !empty($_POST['idproduct'])){
+    $deleteProduct = $_POST['idproduct'];
+
+    deleteProduct($bdd, $deleteProduct);
+}  
+
 ?>
 
 
@@ -51,6 +59,13 @@ if (
         <label for="id">Id Categorie</label>
         <input type="number" name="id" id="id">
         <input type="submit" value="Ajouter">
+    </form>
+
+    <h2>Formulaire pour supprimer un produit</h2>
+    <form method="POST" action="add.php">
+        <label>l'ID du produit que vous souhaitez supprimer</label>
+        <input type="number" name="idproduct" id="idproduct">
+        <input type="submit" value="supprimer">
     </form>
 </body>
 </html>
