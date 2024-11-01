@@ -18,6 +18,7 @@ $products = getProductByCategorie($bdd, $id_categorie); // Récupérer les produ
                 <h3><?= htmlspecialchars($produit['titre']) ?></h3>
                 <p>Prix : <?= htmlspecialchars($produit['prix']) ?> €</p>
                 <p><?= htmlspecialchars($produit['description']) ?></p>
+                <button>Ajouter au panier</button>
             </li>
         <?php endforeach; ?>
     </ul>
