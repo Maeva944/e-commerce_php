@@ -39,13 +39,16 @@ if(isset($_POST['idproduct']) && !empty($_POST['idproduct'])){
 
 
 <body>
+    <div>
     <h2>Formualaire d'ajout de categorie</h2>
     <form method="POST" action="add.php">
         <label for="name">Nom de la catégorie</label>
         <input type="text" name="name" id="name">
         <input type="submit" value="Ajouter">
     </form>
+    </div>
 
+    <div>
     <h2>Formulaire d'ajout de produit</h2>
     <form method="POST" action="add.php">
         <label for="titre">Titre</label>
@@ -60,12 +63,15 @@ if(isset($_POST['idproduct']) && !empty($_POST['idproduct'])){
         <input type="number" name="id" id="id">
         <input type="submit" value="Ajouter">
     </form>
+    </div>
 
+    <div>
     <h2>Formulaire pour supprimer un produit</h2>
     <form method="POST" action="add.php">
         <label>l'ID du produit que vous souhaitez supprimer</label>
         <input type="number" name="idproduct" id="idproduct">
         <input type="submit" value="supprimer">
     </form>
+    </div>
 </body>
 </html>
