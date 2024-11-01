@@ -26,7 +26,7 @@ function add_categorie($bdd, $NewCategorie){
 //Avoir les produit par catégorie
 
 function getProductByCategorie($bdd, $id_categorie){
-    $sqlQuery = "SELECT * FROM categorie WHERE id_categorie = :id_categorie";
+    $sqlQuery = "SELECT * FROM produit WHERE id_categorie = :id_categorie";
     
     $selectProduct = $bdd->prepare($sqlQuery);
     $selectProduct->execute([
