@@ -9,7 +9,7 @@ $products = getProductByCategorie($bdd, $id_categorie); // Récupérer les produ
 
 // Afficher les produits
 ?>
-<body>
+<body id="categorie">
     <h2>Produits de la catégorie <?= htmlspecialchars($name_categorie) ?></h2>
     <ul>
         <?php foreach ($products as $produit) : ?>

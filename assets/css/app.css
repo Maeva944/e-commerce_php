@@ -61,3 +61,53 @@ hr{
     background-color: #b1b1b1b1;
     height: 2px;
 }
+
+/*CSS pour les formulaire d'ajout et suppréssion*/
+
+div {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+h2 {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="number"],
+textarea {
+    width: 99%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+textarea{
+    height: 70px;
+    resize: none;
+}
+
+input[type="submit"] {
+    background-color: var(--bleu);
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: var(--bleu);
+}
